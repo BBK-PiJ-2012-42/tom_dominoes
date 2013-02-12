@@ -18,8 +18,10 @@ public class Launch {
     
     public static void begin() {
         DominoPlayer playerOne = new LocalPlayer();
+        playerOne.setName("Jim");
         DominoPlayer playerTwo = new LocalPlayer();
-        DominoUI gameUI = new LocalUI();
+        playerTwo.setName("Ben");
+        DominoUI gameUI = new ConsoleUI();
         Dominoes game = new Dominoes(gameUI, playerOne, playerTwo, 30, 6);
         game.play();
     }

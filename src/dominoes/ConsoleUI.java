@@ -12,12 +12,13 @@ import dominoes.players.DominoPlayer;
  *
  * @author tom
  */
-public class LocalUI implements DominoUI {
-    ConsoleControl console = new ConsoleControl();
+public class ConsoleUI implements DominoUI {
+    private ConsoleControl console = new ConsoleControl();
     
     @Override
     public void display(DominoPlayer players[], Table table, BoneYard boneyard) {
         console.printPlayer(players[0]); 
+        console.printPlayer(players[1]);
         console.printTable(table);
         console.printBoneyard(boneyard);
     }

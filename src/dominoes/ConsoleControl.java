@@ -15,6 +15,33 @@ public class ConsoleControl {
     
     Scanner input = new Scanner(System.in);
     
+    public Play getPlay(DominoPlayer player, Table table) {
+        System.out.println("The table looks like this at the moment:");
+        printTable(table);
+        System.out.println(player.getName()+" you have the following options. Please pick one.");
+        printOptions(player);
+        int option = getInt();
+        println("Now which side? 0 for left 1 for right: ");
+        int sideInt = getInt();
+        if(sideInt == 0) {
+            return new Play(player.bonesInHand()[option], Play.LEFT);
+        } else {
+            return new Play(player.bonesInHand()[option], Play.RIGHT);
+        }
+        
+    }
+    
+    private void printOptions(DominoPlayer player) {
+        Bone[] hand = player.bonesInHand();
+        int option = 0;
+        for(Bone eachBone : hand) {
+            System.out.print(" "+option+": ");
+            printBone(eachBone);
+            option++;
+        } 
+        System.out.print("\n ");
+    }
+    
     public void printInvalid(DominoPlayer player) {
         System.out.print("Sorry "+player.getName()+" that is not a valid play!");
     }

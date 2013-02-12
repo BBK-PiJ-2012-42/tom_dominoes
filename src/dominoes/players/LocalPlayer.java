@@ -12,15 +12,20 @@ import java.util.ArrayList;
  * @author tom
  */
 public class LocalPlayer implements DominoPlayer {
-    ArrayList<Bone> playerHand = new ArrayList<>();
-    String playerName = "";
-    int playerPoints = 0;
+    private ArrayList<Bone> playerHand = new ArrayList<>();
+    private String playerName = "";
+    private int playerPoints = 0;
+    private Play currentPlay;
+    private ConsoleControl console = new ConsoleControl();
     
     @Override
     public Play makePlay(Table table) throws CantPlayException {
-        int i = 0;
-        Play newPlay = new Play(null, i);
-        return newPlay;
+        if(canPlay(table)) {
+            Play newPlay = console.getPlay(this, table);
+            return newPlay;
+        } else {
+            throw new CantPlayException();
+        }
     }
     
     @Override
@@ -43,7 +48,8 @@ public class LocalPlayer implements DominoPlayer {
     
     @Override
     public Bone[] bonesInHand() {
-        return (Bone[]) playerHand.toArray();
+        Bone[] boneArray = playerHand.toArray(new Bone[playerHand.size()]);
+        return boneArray;
     }
     
     @Override
@@ -69,6 +75,17 @@ public class LocalPlayer implements DominoPlayer {
     @Override
     public String getName() {
         return playerName;
+    }
+    
+    private boolean canPlay(Table table) {
+        for(Bone eachBone : playerHand) {
+            if(eachBone.left() == table.left() || eachBone.left() == table.right()) {
+                return true;
+            } else if(eachBone.right() == table.left() || eachBone.right() == table.right()) {
+                return true;
+            }
+        }
+        return false;
     }
     
 }
