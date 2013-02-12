@@ -22,6 +22,7 @@ public class LocalPlayer implements DominoPlayer {
     public Play makePlay(Table table) throws CantPlayException {
         if(canPlay(table)) {
             Play newPlay = console.getPlay(this, table);
+            removeBone(newPlay.bone());
             return newPlay;
         } else {
             throw new CantPlayException();
@@ -30,7 +31,7 @@ public class LocalPlayer implements DominoPlayer {
     
     @Override
     public void takeBack(Bone bone) {
-         // ?
+        playerHand.add(bone);
     }
     
     @Override
@@ -86,6 +87,10 @@ public class LocalPlayer implements DominoPlayer {
             }
         }
         return false;
+    }
+    
+    private void removeBone(Bone bone) {
+        playerHand.remove(bone);
     }
     
 }

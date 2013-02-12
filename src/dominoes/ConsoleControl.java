@@ -10,6 +10,11 @@ import java.util.Scanner;
 /**
  *
  * @author tom
+ * 
+ * Used to send text to the console and control input.
+ * The ConsoleUI uses it to send output to the players while the LocalPlayer
+ * class uses the getPlay method to get user input.
+ * 
  */
 public class ConsoleControl {
     
@@ -18,9 +23,13 @@ public class ConsoleControl {
     public Play getPlay(DominoPlayer player, Table table) {
         System.out.println("The table looks like this at the moment:");
         printTable(table);
+        System.out.println("So you can play "+table.left()+" : "+table.right());
         System.out.println(player.getName()+" you have the following options. Please pick one.");
         printOptions(player);
-        int option = getInt();
+        int option = 100;
+        do{
+            option = getInt();
+        } while(option >= player.numInHand());
         println("Now which side? 0 for left 1 for right: ");
         int sideInt = getInt();
         if(sideInt == 0) {
@@ -47,16 +56,12 @@ public class ConsoleControl {
     }
     
     public void printWinner(DominoPlayer player) {
-        System.out.print("And the winner is: "+player.getName()+"!");
+        System.out.println("And the winner is: "+player.getName()+"!");
     }
     
     public void printPlayer(DominoPlayer player) {
         Bone[] hand = player.bonesInHand();
-        System.out.print("Player "+player.getName()+": ");
-        for(Bone eachBone : hand) {
-            printBone(eachBone);
-            System.out.print(" ");
-        }
+        System.out.print("Player "+player.getName()+" Score: "+player.getPoints()+" Bones: "+player.numInHand());
         System.out.print("\n ");
     }
     
