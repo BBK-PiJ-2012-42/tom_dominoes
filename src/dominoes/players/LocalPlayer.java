@@ -11,7 +11,7 @@ import java.util.ArrayList;
  *
  * @author tom
  */
-public abstract class LocalPlayer implements DominoPlayer {
+public class LocalPlayer implements DominoPlayer {
     ArrayList<Bone> playerHand = new ArrayList<>();
     String playerName = "";
     int playerPoints = 0;
