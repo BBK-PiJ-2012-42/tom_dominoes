@@ -15,13 +15,18 @@ public class LocalPlayer implements DominoPlayer {
     private ArrayList<Bone> playerHand = new ArrayList<>();
     private String playerName = "";
     private int playerPoints = 0;
-    private Play currentPlay;
-    private ConsoleControl console = new ConsoleControl();
+    //private Play currentPlay;
+    private UIControl control;
+    
+    public LocalPlayer(String name, UIControl control) {
+        this.playerName = name;
+        this.control = control;
+    }
     
     @Override
     public Play makePlay(Table table) throws CantPlayException {
         if(canPlay(table)) {
-            Play newPlay = console.getPlay(this, table);
+            Play newPlay = control.getPlay(this, table);
             removeBone(newPlay.bone());
             return newPlay;
         } else {

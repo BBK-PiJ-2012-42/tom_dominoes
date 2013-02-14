@@ -13,24 +13,31 @@ import dominoes.players.DominoPlayer;
  * @author tom
  */
 public class ConsoleUI implements DominoUI {
-    private ConsoleControl console = new ConsoleControl();
+    UIControl control;
+    
+    public ConsoleUI(UIControl control) {
+        this.control = control;
+    }
+    
+    
+    //private ConsoleControl console = new ConsoleControl();
     
     @Override
     public void display(DominoPlayer players[], Table table, BoneYard boneyard) {
-        console.printPlayer(players[0]); 
-        console.printPlayer(players[1]);
-        console.printTable(table);
-        console.printBoneyard(boneyard);
+        control.updatePlayer(players[0]); 
+        control.updatePlayer(players[1]);
+        control.updateTable(table);
+        control.updateBoneyard(boneyard);
     }
     
     @Override
     public void displayRoundWinner(DominoPlayer player) {
-        console.printWinner(player);
+        control.updateWinner(player);
     }
     
     @Override
     public void displayInvalidPlay(DominoPlayer player) {
-        console.printInvalid(player);
+        control.updateInvalid(player);
     }
     
 }

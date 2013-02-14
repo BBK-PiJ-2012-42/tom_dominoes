@@ -17,12 +17,11 @@ public class Launch {
     }
     
     public static void begin() {
-        DominoPlayer playerOne = new LocalPlayer();
-        playerOne.setName("Jim");
-        DominoPlayer playerTwo = new LocalPlayer();
-        playerTwo.setName("Ben");
-        DominoUI gameUI = new ConsoleUI();
-        Dominoes game = new Dominoes(gameUI, playerOne, playerTwo, 30, 6);
+        UIControl control = new ConsoleControl();
+        DominoPlayer playerOne = new LocalPlayer("Jim", control);
+        DominoPlayer playerTwo = new LocalPlayer("Ben", control);
+        DominoUI gameUI = new ConsoleUI(control);
+        Dominoes game = new Dominoes(gameUI, playerOne, playerTwo, 10, 6);
         game.play();
     }
 }
