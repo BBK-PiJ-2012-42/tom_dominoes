@@ -6,6 +6,7 @@ package dominoes;
 
 import dominoes.players.DominoPlayer;
 import dominoes.players.LocalPlayer;
+import dominoes.players.SimpleAIPlayer;
 
 /**
  *
@@ -22,9 +23,9 @@ public class Launch {
 //            
 //        }
         DominoPlayer playerOne = new LocalPlayer("Jim", control);
-        DominoPlayer playerTwo = new LocalPlayer("Ben", control);
+        DominoPlayer playerTwo = new SimpleAIPlayer("MARVIN", control);
         DominoUI gameUI = new ConsoleUI(control);
-        Dominoes game = new Dominoes(gameUI, playerOne, playerTwo, 100, 6);
+        Dominoes game = new Dominoes(gameUI, playerOne, playerTwo, 20, 6);
         game.play();
     }
 }
