@@ -18,10 +18,13 @@ public class Launch {
     
     public static void begin() {
         UIControl control = new ConsoleControl();
+//        if(control.askGameType == UIControl.LOCAL) {
+//            
+//        }
         DominoPlayer playerOne = new LocalPlayer("Jim", control);
         DominoPlayer playerTwo = new LocalPlayer("Ben", control);
         DominoUI gameUI = new ConsoleUI(control);
-        Dominoes game = new Dominoes(gameUI, playerOne, playerTwo, 10, 6);
+        Dominoes game = new Dominoes(gameUI, playerOne, playerTwo, 100, 6);
         game.play();
     }
 }

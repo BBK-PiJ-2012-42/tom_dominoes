@@ -41,20 +41,26 @@ public class ConsoleControl implements UIControl {
         
     }
     
+    @Override
     public void updateInvalid(DominoPlayer player) {
         System.out.print("Sorry "+player.getName()+" that is not a valid play!");
     }
     
+    @Override
     public void updateWinner(DominoPlayer player) {
         System.out.println("And the winner is: "+player.getName()+"!");
+
+        
     }
     
+    @Override
     public void updatePlayer(DominoPlayer player) {
         Bone[] hand = player.bonesInHand();
         System.out.print("Player "+player.getName()+" Score: "+player.getPoints()+" Bones: "+player.numInHand());
         System.out.print("\n ");
     }
     
+    @Override
     public void updateTable(Table table) {
         Bone[] layout = table.layout();
         System.out.print("Table: ");
@@ -65,6 +71,7 @@ public class ConsoleControl implements UIControl {
         System.out.print("\n ");
     }
     
+    @Override
     public void updateBoneyard(BoneYard boneyard) {
         System.out.println("Boneyard Size: "+boneyard.size());
     }
