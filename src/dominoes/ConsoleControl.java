@@ -88,7 +88,7 @@ public class ConsoleControl implements UIControl {
         return input.nextLine();   
     }
     
-    private int getInt() {
+    public int getInt() {
         return input.nextInt();  
     }
     
