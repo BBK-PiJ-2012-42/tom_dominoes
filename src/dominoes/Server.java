@@ -13,15 +13,28 @@ import java.rmi.registry.Registry;
  */
 public class Server {
     private int port = 1099;
+    private ComInterface connection;
     
-    private void start(){
+    public Server() {
+        this.connection = new ComImpl();
+    }
+    
+    public void start(){
         try {
             Registry registry = LocateRegistry.createRegistry(port);
-            registry.rebind("serverCom", new ComImpl());
+            registry.rebind("serverCom", connection);
         } catch (Exception e) {
             e.printStackTrace();
         }      
         System.out.println("Server Ready");
+    }
+    
+    public void setServerMessage(String serverMessage) {
+        connection.setServerMessage(serverMessage);
+    }
+    
+    public String getClientMessage() {
+        return connection.getClientMessage();
     }
     
 }

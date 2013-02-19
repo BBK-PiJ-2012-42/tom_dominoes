@@ -15,5 +15,7 @@ public interface ComInterface extends Remote {
     public String communicate(String clientMessage) throws RemoteException;
     
     public void setServerMessage(String serverMessage);
+    
+    public String getClientMessage();
 }
 

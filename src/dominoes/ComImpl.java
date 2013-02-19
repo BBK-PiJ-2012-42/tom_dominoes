@@ -24,5 +24,12 @@ public class ComImpl implements ComInterface {
     public void setServerMessage(String serverMessage) {
         this.serverMessage = serverMessage;
     }
+
+    @Override
+    public String getClientMessage() {
+        return clientMessage;
+    }
+    
+    
     
 }
