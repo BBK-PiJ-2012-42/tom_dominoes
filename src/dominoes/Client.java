@@ -17,19 +17,29 @@ public class Client {
         
     }
     
-    public boolean connect() {
+//    public boolean connect() {
+//        try {
+//            Registry myRegistry = LocateRegistry.getRegistry(ipAddress, port);
+//            connection = (ComInterface) myRegistry.lookup("serverCom");
+//            return true;
+//       } catch (Exception e) {
+//           return false;
+//        }  
+//    }
+    
+    public String sendMessage(String ClientMessage) throws RemoteException {
         try {
             Registry myRegistry = LocateRegistry.getRegistry(ipAddress, port);
             connection = (ComInterface) myRegistry.lookup("serverCom");
-            return true;
-       } catch (Exception e) {
-            e.printStackTrace();
-           return false;
-        }  
-    }
-    
-    public String sendMessage(String ClientMessage) throws RemoteException {
-        return connection.communicate(ClientMessage);
+            String response = connection.communicate(ClientMessage);
+            if(response != null) {
+                return response;
+            } else {
+                return "no response.";
+            }
+        } catch (Exception e) {
+                return "Error.";
+            }  
     }
     
 }

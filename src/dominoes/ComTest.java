@@ -25,17 +25,20 @@ public class ComTest {
             while(mes != "0") {
                 if(mes != null) {
                     System.out.println(server.getClientMessage());
-                }
-                
+                }   
             }
             System.out.println("Server no longer listening.");
         } else {
             Client client = new Client();
-            client.connect();
+            //client.connect();
             System.out.println("Client connected...");
+            String mes = "";
             System.out.println("Send:");
-            String mes = Integer.toString(console.getInt());
-            client.sendMessage(mes);
+            while(mes != "0") {
+                mes = Integer.toString(console.getInt());
+                client.sendMessage(mes);
+            }
+
             
         }
         
