@@ -25,7 +25,7 @@ public class Launch {
         DominoPlayer playerOne = new LocalPlayer("Jim", control);
         DominoPlayer playerTwo = new SimpleAIPlayer("MARVIN", control);
         DominoUI gameUI = new ConsoleUI(control);
-        Dominoes game = new Dominoes(gameUI, playerOne, playerTwo, 20, 6);
+        Dominoes game = new Dominoes(gameUI, playerOne, playerTwo, 30, 6);
         game.play();
     }
 }

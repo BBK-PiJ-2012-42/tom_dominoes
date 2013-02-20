@@ -10,8 +10,8 @@ import java.rmi.registry.Registry;
  */
 public class Client {
     private ComInterface connection = null;
-    private String ipAddress = "127.0.0.1";
-    private int port = 1099;
+    private String ipAddress = "0.0.0.0";
+    private int port = 80;
     
     public Client() {
         
@@ -27,19 +27,20 @@ public class Client {
 //        }  
 //    }
     
-    public String sendMessage(String ClientMessage) throws RemoteException {
+    public String sendMessage(String clientMessage) throws RemoteException {
         try {
             Registry myRegistry = LocateRegistry.getRegistry(ipAddress, port);
-            connection = (ComInterface) myRegistry.lookup("serverCom");
-            String response = connection.communicate(ClientMessage);
+            connection = (ComInterface) myRegistry.lookup("reg");
+            String response = connection.communicate(clientMessage);
             if(response != null) {
                 return response;
             } else {
                 return "no response.";
             }
         } catch (Exception e) {
-                return "Error.";
-            }  
+            e.printStackTrace();
+            return null;
+        }  
     }
     
 }
