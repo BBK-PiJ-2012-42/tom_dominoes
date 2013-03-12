@@ -29,11 +29,11 @@ public class Server {
         System.out.println("Server Ready");
     }
     
-    public void setServerMessage(String serverMessage) {
+    public void setServerMessage(String serverMessage) throws RemoteException {
         connection.setServerMessage(serverMessage);
     }
     
-    public String getClientMessage() {
+    public String getClientMessage() throws RemoteException {
         return connection.getClientMessage();
     }
     

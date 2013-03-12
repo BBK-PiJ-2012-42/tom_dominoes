@@ -31,9 +31,12 @@ public class ComTest {
             server.setServerMessage("rdy");
             String mes = server.getClientMessage();
             while(!"0".equals(mes)) {
-                System.out.println(mes);
+                System.out.println("FROM CLIENT// " + mes);
                 wait(2);
                 mes = server.getClientMessage();
+                if(mes != null) {
+                    server.setServerMessage("Recieved: "+ mes);
+                }
             }
             System.out.println("Server no longer listening.");
         } else {
@@ -44,10 +47,15 @@ public class ComTest {
             System.out.println("Send: "+mes);
             client.sendMessage(mes);
             String res = null;
+            int i = 0;
             while(!"0".equals(mes)) {
+                if(i > 5) {
+                    mes = Integer.toString(i)+" secs now..."; 
+                }
                 res = client.sendMessage(mes);
-                System.out.println(res);
+                System.out.println("FROM SERVER// "+res);
                 wait(2);
+                i++;
             }
 
             

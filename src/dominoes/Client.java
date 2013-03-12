@@ -17,15 +17,6 @@ public class Client {
         
     }
     
-//    public boolean connect() {
-//        try {
-//            Registry myRegistry = LocateRegistry.getRegistry(ipAddress, port);
-//            connection = (ComInterface) myRegistry.lookup("serverCom");
-//            return true;
-//       } catch (Exception e) {
-//           return false;
-//        }  
-//    }
     
     public String sendMessage(String clientMessage) throws RemoteException {
         try {
