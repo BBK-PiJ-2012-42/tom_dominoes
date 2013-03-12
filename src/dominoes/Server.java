@@ -4,6 +4,7 @@
  */
 package dominoes;
 
+import java.rmi.RemoteException;
 import java.rmi.registry.LocateRegistry;
 import java.rmi.registry.Registry;
 
@@ -15,7 +16,7 @@ public class Server {
     private int port = 80;
     private ComInterface connection = new ComImpl();
     
-    public Server() {
+    public Server() throws RemoteException {
     }
     
     public void start(){

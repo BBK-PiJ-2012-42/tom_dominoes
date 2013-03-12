@@ -14,8 +14,8 @@ import java.rmi.RemoteException;
 public interface ComInterface extends Remote {
     public String communicate(String clientMessage) throws RemoteException;
     
-    public void setServerMessage(String serverMessage);
+    public void setServerMessage(String serverMessage) throws RemoteException;
     
-    public String getClientMessage();
+    public String getClientMessage() throws RemoteException;
 }
 

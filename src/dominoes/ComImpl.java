@@ -5,14 +5,19 @@
 package dominoes;
 
 import java.rmi.RemoteException;
+import java.rmi.server.UnicastRemoteObject;
 
 /**
  *
  * @author tom
  */
-public class ComImpl implements ComInterface {
+public class ComImpl extends UnicastRemoteObject implements ComInterface {
     private String serverMessage = null;
     private String clientMessage = null;
+    
+    public ComImpl() throws RemoteException {
+        
+    }
 
     @Override
     public String communicate(String clientMessage) throws RemoteException {
