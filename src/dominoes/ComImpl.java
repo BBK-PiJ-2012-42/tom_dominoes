@@ -14,13 +14,25 @@ import java.rmi.server.UnicastRemoteObject;
 public class ComImpl extends UnicastRemoteObject implements ComInterface {
     private String serverMessage = null;
     private String clientMessage = null;
+    private String clientName = "";
+    private RemotePlayerInter object;
+    private int playerCount = 0;
     
     public ComImpl() throws RemoteException {
         
     }
+    
+    @Override
+    public int getPlayerCount() {
+        if(playerCount > 0) {
+            System.out.println("Returning player count of "+playerCount);
+        }
+        return playerCount;
+    }
 
     @Override
-    public String communicate(String clientMessage) throws RemoteException {
+    public String communicate(String clientName, String clientMessage) throws RemoteException {
+        this.clientName = clientName;
         this.clientMessage = clientMessage;
         return serverMessage;
     }
@@ -34,6 +46,24 @@ public class ComImpl extends UnicastRemoteObject implements ComInterface {
     public String getClientMessage() {
         return clientMessage;
     }
+    
+    @Override
+    public String getClientName() {
+        return clientName;
+    }
+
+    @Override
+    public void passRemote(RemotePlayerInter object) throws RemoteException {
+        this.object = object;
+        playerCount++;
+    }
+
+    @Override
+    public RemotePlayerInter getRemote() throws RemoteException {
+        return object;
+    }
+    
+    
     
     
     

@@ -30,10 +30,12 @@ public class ComTest {
             System.out.println("Started server...");
             server.setServerMessage("rdy");
             String mes = server.getClientMessage();
+            String name = server.getClientName();
             while(!"0".equals(mes)) {
-                System.out.println("FROM CLIENT// " + mes);
+                System.out.println("FROM CLIENT "+name+" // " + mes);
                 wait(2);
                 mes = server.getClientMessage();
+                name = server.getClientName();
                 if(mes != null) {
                     server.setServerMessage("Recieved: "+ mes);
                 }

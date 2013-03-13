@@ -37,4 +37,8 @@ public class Server {
         return connection.getClientMessage();
     }
     
+    public String getClientName() throws RemoteException {
+        return connection.getClientName();
+    }
+    
 }

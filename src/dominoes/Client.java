@@ -12,9 +12,10 @@ public class Client {
     private ComInterface connection = null;
     private String ipAddress = "0.0.0.0";
     private int port = 80;
+    public String name;
     
     public Client() {
-        
+        this.name = Double.toString(Math.random() * 10);
     }
     
     
@@ -22,7 +23,7 @@ public class Client {
         try {
             Registry myRegistry = LocateRegistry.getRegistry(ipAddress, port);
             connection = (ComInterface) myRegistry.lookup("reg");
-            String response = connection.communicate(clientMessage);
+            String response = connection.communicate(name, clientMessage);
             if(response != null) {
                 return response;
             } else {
