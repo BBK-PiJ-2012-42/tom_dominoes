@@ -32,10 +32,12 @@ public class DominoClient {
         try {
             System.out.println("Connecting to server.");
             RemotePlayerInter remotePlayer = new RemotePlayerImpl(player, control);
-            UnicastRemoteObject.exportObject(remotePlayer, 8080);
-            Registry myRegistry = LocateRegistry.getRegistry(ipAddress, port);
-            connection = (ComInterface) myRegistry.lookup("reg");
-            connection.passRemote(remotePlayer);
+            RemotePlayerInter remotePlayerStub = (RemotePlayerInter) UnicastRemoteObject.exportObject(remotePlayer, 8080);
+	    //Registry clientRegistry = LocateRegistry.getRegistry();
+	    //clientRegistry.bind("player", remotePlayerStub);
+            Registry serverRegistry = LocateRegistry.getRegistry(ipAddress, port);
+            connection = (ComInterface) serverRegistry.lookup("reg");
+            connection.passRemote(remotePlayerStub);
             System.out.println(connection.getPlayerCount());
             //String response = connection.communicate(name, clientMessage);
         } catch (Exception e) {

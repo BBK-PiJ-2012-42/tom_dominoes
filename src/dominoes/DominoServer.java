@@ -14,15 +14,14 @@ import java.rmi.registry.Registry;
  * @author tom
  */
 public class DominoServer {
-    private static ComInterface connection;
     
     public static void main(String[] args) throws RemoteException {
-        connection = new ComImpl();
         DominoServer server = new DominoServer();
         server.start(80);
     }
     
     private void start(int port) throws RemoteException {
+        ComInterface connection = new ComImpl();
         boolean playerRdy = false;
         RemotePlayerInter playerOne = null;
         RemotePlayerInter playerTwo = null;
@@ -63,15 +62,4 @@ public class DominoServer {
         System.out.println("Game started.");
     }
     
-    public void setServerMessage(String serverMessage) throws RemoteException {
-        connection.setServerMessage(serverMessage);
-    }
-    
-    public String getClientMessage() throws RemoteException {
-        return connection.getClientMessage();
-    }
-    
-    public String getClientName() throws RemoteException {
-        return connection.getClientName();
-    }
 }
