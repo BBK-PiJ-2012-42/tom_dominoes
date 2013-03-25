@@ -8,7 +8,9 @@ import java.util.ArrayList;
  * @author tom
  * 
  * This AIPLayer implements a set of rules gathered from guides on how to play
- * dominoes. The rules exist as specific methods beginning with the word 'select'.
+ * dominoes. The rules exist as specific methods that add a score to each possible
+ * play that the AIPlayer can make. After all rules have been applied the play
+ * with the best score is selected.
  */
 public class RuleBaseAIPlayer implements DominoPlayer {
     private ArrayList<Bone> playerHand = new ArrayList<>();
@@ -52,7 +54,7 @@ public class RuleBaseAIPlayer implements DominoPlayer {
     }
     
     /*
-     * returns an interger array representing the result of a play on the table.
+     * returns an integer array representing the result of a play on the table.
      */
     private int[] getPlayResult(Table table, Play play) throws CantPlayException {
         int[] result = new int[2];
