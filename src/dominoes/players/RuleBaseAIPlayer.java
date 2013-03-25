@@ -43,7 +43,7 @@ public class RuleBaseAIPlayer implements DominoPlayer {
                     newPlay = possiblePlays.get(i);
                 }
             }
-            showPlayScores();
+            //showPlayScores();
             removeBone(newPlay.bone());
             return newPlay;
         } else {
@@ -75,7 +75,7 @@ public class RuleBaseAIPlayer implements DominoPlayer {
     }
     
     /*
-     * Adds 2 points to each possible plays score if it would result in a table
+     * Adds a number of points to each possible plays score if it would result in a table
      * that allows another of the players bones to be played on a side of the table.
      * If it could be played on either side of the new table the play gets 4 points.
      */
@@ -86,12 +86,12 @@ public class RuleBaseAIPlayer implements DominoPlayer {
             result = getPlayResult(table, eachPlay);
             for(Bone eachBone : playerHand) {
                 if(eachBone.left() == result[0] | eachBone.left() == result[1]) {
-                    System.out.println("Option "+i+" gets a more play bonus!");
-                    playScore[i] += 2;
+                    //System.out.println("Option "+i+" gets a more play bonus!");
+                    playScore[i] += 5;
                 }
                 if(eachBone.right() == result[0] | eachBone.right() == result[1]) {
-                    System.out.println("Option "+i+" gets a more play bonus!");
-                    playScore[i] += 2;
+                    //System.out.println("Option "+i+" gets a more play bonus!");
+                    playScore[i] += 5;
                 }
             }
             i++;
@@ -108,18 +108,18 @@ public class RuleBaseAIPlayer implements DominoPlayer {
             if(table.right() == table.left()) {
                 if(eachPlay.bone().right() == eachPlay.bone().left()) {
                         //System.out.println("Play will keep sides equal so add 10");
-                        playScore[i] += 10;
+                        playScore[i] += 20;
                 }
             } else {
                 if(eachPlay.end() == Play.LEFT) {
                     if(table.right() == eachPlay.bone().right() | table.right() == eachPlay.bone().left()) {
                         //System.out.println("Play will keep sides equal so add 10");
-                        playScore[i] += 10;
+                        playScore[i] += 20;
                     }
                 } else if(eachPlay.end() == Play.RIGHT) {
                     if(table.left() == eachPlay.bone().right() | table.left() == eachPlay.bone().left()) {
                         //System.out.println("Play will keep sides equal so add 10");
-                        playScore[i] += 10;
+                        playScore[i] += 20;
                     }
                 }
             }

@@ -13,27 +13,46 @@ import dominoes.players.DominoPlayer;
  * @author tom
  */
 public class ConsoleUI implements DominoUI {
-    UIControl control;
-    int displaywinner = 0;
+    private UIControl control;
+    private String playerOneName = "";
+    private String playerTwoName = "";
+    private int playerOneWins = 0;
+    private int playerTwoWins = 0;
     
     public ConsoleUI(UIControl control) {
         this.control = control;
     }
     
-    
-    //private ConsoleControl console = new ConsoleControl();
-    
     @Override
     public void display(DominoPlayer players[], Table table, BoneYard boneyard) {
-        control.updatePlayer(players[0]); 
-        control.updatePlayer(players[1]);
-        control.updateTable(table);
-        control.updateBoneyard(boneyard);
+        //control.updatePlayer(players[0]); 
+        //control.updatePlayer(players[1]);
+        //control.updateTable(table);
+        //control.updateBoneyard(boneyard);
     }
     
     @Override
     public void displayRoundWinner(DominoPlayer player) {
-        control.updateWinner(player);        
+        control.updateWinner(player);     
+        if(player != null) {
+
+            
+            if(player.getName() == "HAL") {
+                playerOneWins += 1;
+            } else if(player.getName() == "MARVIN") {
+                playerTwoWins += 1;
+            }
+        }
+        
+        float ratio = 0;
+        
+        if(playerTwoWins != 0) {
+            ratio = ((float) playerOneWins) / playerTwoWins;
+        }
+        
+        System.out.print("HAL has won "+playerOneWins+" times. ");
+        System.out.print("MARVIN has won "+playerTwoWins+" times. ");
+        System.out.println("Ratio: "+ratio);
     }
     
     @Override
