@@ -14,6 +14,7 @@ import dominoes.players.DominoPlayer;
  */
 public class ConsoleUI implements DominoUI {
     UIControl control;
+    int displaywinner = 0;
     
     public ConsoleUI(UIControl control) {
         this.control = control;
@@ -32,7 +33,12 @@ public class ConsoleUI implements DominoUI {
     
     @Override
     public void displayRoundWinner(DominoPlayer player) {
-        control.updateWinner(player);
+        //if(!player.equals(null)) {
+            control.updateWinner(player);
+        //} else {
+        //    System.out.println("WINNER NULL");
+        //}
+        
     }
     
     @Override
