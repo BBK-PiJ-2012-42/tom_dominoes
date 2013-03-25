@@ -53,7 +53,7 @@ public class ConsoleUI implements DominoUI {
         }
         
         System.out.print("HAL has won "+playerOneWins+" times. ");
-        System.out.print("MARVIN has won "+playerTwoWins+" times. ");
+        System.out.println("MARVIN has won "+playerTwoWins+" times. ");
         System.out.print("Percentage: "+percent+"% ");
         System.out.println("Ratio: "+ratio);
     }

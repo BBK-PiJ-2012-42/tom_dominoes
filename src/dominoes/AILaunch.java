@@ -6,6 +6,7 @@ package dominoes;
 
 import dominoes.players.RuleBaseAIPlayer;
 import dominoes.players.DominoPlayer;
+import dominoes.players.RandomAIPlayer;
 import dominoes.players.SimpleAIPlayer;
 
 /**
@@ -22,6 +23,7 @@ public class AILaunch {
         DominoPlayer playerOne = new RuleBaseAIPlayer("HAL", control);
         //DominoPlayer playerOne = new SimpleAIPlayer("Jim", control);
         DominoPlayer playerTwo = new SimpleAIPlayer("MARVIN", control);
+        //DominoPlayer playerTwo = new RandomAIPlayer("MARVIN", control);
         DominoUI gameUI = new ConsoleUI(control);
         Dominoes game = new Dominoes(gameUI, playerOne, playerTwo, 300000, 6);
         game.play();
