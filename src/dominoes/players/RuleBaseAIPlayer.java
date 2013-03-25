@@ -42,7 +42,7 @@ public class RuleBaseAIPlayer implements DominoPlayer {
             scoreToAllowMorePlays(table);
             scoreForPassed(table);
             
-            // Use the play that has the higest score.
+            // Use the play that has the highest score.
             int currentBestScore = -1;
             for(int i = 0; i < noOfPlays; i++) {
                 if(playScore[i] > currentBestScore) {
