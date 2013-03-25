@@ -33,12 +33,7 @@ public class ConsoleUI implements DominoUI {
     
     @Override
     public void displayRoundWinner(DominoPlayer player) {
-        //if(!player.equals(null)) {
-            control.updateWinner(player);
-        //} else {
-        //    System.out.println("WINNER NULL");
-        //}
-        
+        control.updateWinner(player);        
     }
     
     @Override

@@ -48,7 +48,12 @@ public class ConsoleControl implements UIControl {
     
     @Override
     public void updateWinner(DominoPlayer player) {
-        System.out.println("And the winner is: "+player.getName()+"!");
+        if(player != null) {
+            System.out.println("And the winner is: "+player.getName()+"!");
+        } else {
+            System.out.println("No winner that game was a draw!");
+        }
+        
 
         
     }
