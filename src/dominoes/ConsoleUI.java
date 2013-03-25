@@ -45,13 +45,16 @@ public class ConsoleUI implements DominoUI {
         }
         
         float ratio = 0;
+        float percent = 0;
         
         if(playerTwoWins != 0) {
             ratio = ((float) playerOneWins) / playerTwoWins;
+            percent = ((float) playerOneWins) / (playerOneWins + playerTwoWins);
         }
         
         System.out.print("HAL has won "+playerOneWins+" times. ");
         System.out.print("MARVIN has won "+playerTwoWins+" times. ");
+        System.out.print("Percentage: "+percent+"% ");
         System.out.println("Ratio: "+ratio);
     }
     
