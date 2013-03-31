@@ -4,7 +4,8 @@ import dominoes.*;
 import java.util.ArrayList;
 
 /**
- *
+ * Final
+ * 
  * @author tom
  * 
  * This AIPLayer implements a set of rules gathered from guides on how to play
