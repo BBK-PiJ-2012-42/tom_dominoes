@@ -23,7 +23,22 @@ public class RuleBaseAIPlayer implements DominoPlayer {
     private ArrayList<Play> possiblePlays;
     private int[] playScore;
     
+    // Constructor to use UIControl to hook past the DominoUI and allow user to
+    // see the AI work.
     public RuleBaseAIPlayer(String name, UIControl control) {
+        oldTable[0] = -1;
+        oldTable[1] = -1;
+        this.playerName = name;
+    }
+    
+    // Base constructor.
+    public RuleBaseAIPlayer() {
+        oldTable[0] = -1;
+        oldTable[1] = -1;
+    }
+    
+    // Base constructor to set name.
+    public RuleBaseAIPlayer(String name) {
         oldTable[0] = -1;
         oldTable[1] = -1;
         this.playerName = name;
@@ -128,11 +143,9 @@ public class RuleBaseAIPlayer implements DominoPlayer {
             result = getPlayResult(table, eachPlay);
             for(Bone eachBone : playerHand) {
                 if(eachBone.left() == result[0] | eachBone.left() == result[1]) {
-                    //System.out.println("Option "+i+" gets a more play bonus!");
                     playScore[i] += 2;
                 }
-                if(eachBone.right() == result[0] | eachBone.right() == result[1]) {
-                    //System.out.println("Option "+i+" gets a more play bonus!");
+                if(eachBone.right() == result[0] | eachBone.right() == result[1]) {                   
                     playScore[i] += 2;
                 }
             }
@@ -149,18 +162,15 @@ public class RuleBaseAIPlayer implements DominoPlayer {
         for(Play eachPlay : possiblePlays) {
             if(table.right() == table.left()) {
                 if(eachPlay.bone().right() == eachPlay.bone().left()) {
-                        //System.out.println("Play will keep sides equal so add 10");
                         playScore[i] += 10;
                 }
             } else {
                 if(eachPlay.end() == Play.LEFT) {
                     if(table.right() == eachPlay.bone().right() | table.right() == eachPlay.bone().left()) {
-                        //System.out.println("Play will keep sides equal so add 10");
                         playScore[i] += 10;
                     }
                 } else if(eachPlay.end() == Play.RIGHT) {
                     if(table.left() == eachPlay.bone().right() | table.left() == eachPlay.bone().left()) {
-                        //System.out.println("Play will keep sides equal so add 10");
                         playScore[i] += 10;
                     }
                 }
@@ -265,12 +275,4 @@ public class RuleBaseAIPlayer implements DominoPlayer {
         playerHand.remove(bone);
     }
     
-    private void showPlayScores() {
-        int i = 0;
-        for(Play eachPlay : possiblePlays) {
-            Bone eachBone = eachPlay.bone();
-            System.out.println("bone "+i+": ("+eachBone.left()+","+eachBone.right()+") is given a score of: "+playScore[i]);
-            i++;
-        }
-    }
 }
